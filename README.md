@@ -61,7 +61,7 @@ Ensinar os fundamentos da lógica de programação através de desafios prático
 
 Para dúvidas ou sugestões, entre em contato:
 
-- Email: beatrizcampos.2020@alunos.utfpr.edu.br / rafaelpalmafrancisco@alunos.utfpr.edu.br
+- Email: beatrizcampos.2020@alunos.utfpr.edu.br / rafaelpalmafrancisco@alunos.utfpr.edu.br / kauanlima@alunos.utfpr.edu.br
 
 **Divirta-se aprendendo lógica de programação com o nosso jogo!**
 
