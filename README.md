@@ -18,24 +18,6 @@ Ensinar os fundamentos da lógica de programação através de desafios prático
 - **Progresso Gradual**: Níveis de dificuldade crescente, projetados para acompanhar o seu desenvolvimento.
 - **Feedback Instantâneo**: Receba correções e explicações sobre os desafios resolvidos.
   
-## 🚶‍♂️ Começando
-
-1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/seu-usuario/CodeQuest.git
-   ```
-   
-2. **Instale as dependências**:
-   ```bash
-   npm install
-   ```
-   
-3. **Inicie o servidor**:
-   ```bash
-   npm start
-   ```
-
-4. Acesse o site no seu navegador: `http://localhost:3000`
 
 ## 🛠️ Tecnologias Utilizadas
 
