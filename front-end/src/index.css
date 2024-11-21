@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+.bg-gradient-orange {
+  background: rgb(247, 124, 73);
+  background: linear-gradient(135deg, rgba(247, 124, 73, 1) 0%, rgba(249, 164, 130, 1) 100%);
+}
+
+.bg-gradient-blue {
+  background: rgb(25, 19, 47);
+  background: linear-gradient(135deg, rgba(25, 19, 47, 1) 0%, rgba(51, 44, 74, 1) 100%);
+}
+
+.title {
+  color: #f7cfc8;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 90px;
+  letter-spacing: 10px;
+  text-align: center;
+  text-shadow: -6px -6px #4d84c8, -5px -5px #4d84c8,
+    -4px -4px #4d84c8, -3px -3px #4d84c8, -2px -2px #4d84c8,
+    -1px -1px #4d84c8, 1px 1px #4d84c8, 2px 2px #4d84c8,
+    3px 3px #4d84c8, 4px 4px #4d84c8, 5px 5px #4d84c8,
+    6px 6px #4d84c8, 7px 7px #4d84c8, 8px 8px #4d84c8,
+    9px 9px #4d84c8, 10px 10px #4d84c8, 11px 11px #4d84c8,
+    12px 12px #4d84c8, 13px 13px #4d84c8, 14px 14px #4d84c8,
+    15px 15px #4d84c8, 16px 16px #4d84c8, 17px 17px #4d84c8,
+    18px 18px #4d84c8, 19px 19px #4d84c8, 20px 20px #4d84c8,
+    21px 21px #4d84c8, 22px 22px #4d84c8, 23px 23px #4d84c8,
+    24px 24px #4d84c8, 25px 25px #4d84c8, 26px 26px #4d84c8,
+    27px 27px #4d84c8, 25px 25px #4d84c8, 28px 28px #4d84c8,
+    29px 29px #4d84c8, 30px 30px #4d84c8, 31px 31px #4d84c8,
+    32px 32px #4d84c8, 33px 33px #4d84c8, 34px 34px #4d84c8,
+    35px 35px #4d84c8, 36px 36px #4d84c8, 37px 37px #4d84c8,
+    38px 38px #4d84c8, 39px 39px #4d84c8, 40px 40px;
+  width: 100%;
+}
