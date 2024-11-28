@@ -5,9 +5,15 @@ const ApiContext = createContext()
 
 function ApiContextProvider({ children }) {
   const [text, setText] = useState(0)
+  const [inputValue, setInputValue] = useState("");
+  const [currentPosition, setCurrentPosition] = useState(0);
+  const [feedback, setFeedback] = useState("");
 
   const data = {
-    text, setText
+    text, setText,
+    inputValue, setInputValue,
+    currentPosition, setCurrentPosition,
+    feedback, setFeedback
   }
 
   return (
