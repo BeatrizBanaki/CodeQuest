@@ -19,8 +19,9 @@
   font-family: "Luckiest Guy", cursive;
   font-size: 90px;
   letter-spacing: 10px;
+  line-height: 80px;
   text-align: center;
-  text-shadow: -6px -6px #4d84c8, -5px -5px #4d84c8,
+  /* text-shadow: -6px -6px #4d84c8, -5px -5px #4d84c8,
     -4px -4px #4d84c8, -3px -3px #4d84c8, -2px -2px #4d84c8,
     -1px -1px #4d84c8, 1px 1px #4d84c8, 2px 2px #4d84c8,
     3px 3px #4d84c8, 4px 4px #4d84c8, 5px 5px #4d84c8,
@@ -35,6 +36,46 @@
     29px 29px #4d84c8, 30px 30px #4d84c8, 31px 31px #4d84c8,
     32px 32px #4d84c8, 33px 33px #4d84c8, 34px 34px #4d84c8,
     35px 35px #4d84c8, 36px 36px #4d84c8, 37px 37px #4d84c8,
-    38px 38px #4d84c8, 39px 39px #4d84c8, 40px 40px;
+    38px 38px #4d84c8, 39px 39px #4d84c8, 40px 40px; */
   width: 100%;
+}
+
+#corredor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  height: 50px;
+  border: 1px solid #ccc;
+  margin: 20px auto;
+  position: relative;
+}
+
+#gato {
+  width: 30px;
+  height: 30px;
+  background-color: orange;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+}
+
+#tigela {
+  width: 30px;
+  height: 30px;
+  background-color: green;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+}
+
+#interface {
+  text-align: center;
+  margin: 20px;
+}
+
+#codigo {
+  width: 300px;
+  height: 100px;
+  font-family: monospace;
 }
