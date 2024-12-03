@@ -21,7 +21,7 @@ Ensinar os fundamentos da lógica de programação através de desafios prático
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Front-end**: HTML5, CSS3, JavaScript
+- **Front-end**: React.js, Tailwind CSS, JavaScript
 - **Back-end**: Node.js, Express
 - **Banco de Dados**: MySQL
 - **Autenticação**: JWT (JSON Web Tokens)
