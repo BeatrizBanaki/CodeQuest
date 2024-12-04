@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function Question1() {
+export default function Challenge1() {
   const { text, setText,
     inputValue, setInputValue,
     currentPosition, setCurrentPosition,

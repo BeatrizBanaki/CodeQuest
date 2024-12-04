@@ -1,10 +1,10 @@
 import Result1 from './Result1'
 
 
-export default function Result() {
+export default function Result({ children }) {
   return (
     <div className="w-full h-full bg-gradient-dark p-10 flex items-center justify-center">
-      <Result1></Result1>
+      {children}
     </div>
   )
 }

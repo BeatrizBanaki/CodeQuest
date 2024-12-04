@@ -1,11 +1,8 @@
 import { useRef, useContext, useState } from 'react';
 import { ApiContext } from '../../context/ApiContext';
-import Question1 from './Question1';
-
-export default function Code() {
-  const { text, setText } = useContext(ApiContext);
 
 
+export default function Code({ children }) {
   return (
     <div className="w-full h-full bg-gradient-light p-10">
       <div className="w-full flex justify-center">
@@ -16,7 +13,7 @@ export default function Code() {
           </h1>
         </div>
       </div>
-      <Question1></Question1>
+      {children}
     </div>
   );
 }
