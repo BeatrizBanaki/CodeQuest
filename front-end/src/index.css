@@ -4,24 +4,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-.bg-gradient-orange {
-  background: rgb(247, 124, 73);
-  background: linear-gradient(135deg, rgba(247, 124, 73, 1) 0%, rgba(249, 164, 130, 1) 100%);
+.bg-gradient-light {
+  background: rgb(167, 139, 250);
+  background: linear-gradient(135deg, rgba(167, 139, 250, 1) 0%, rgba(221, 214, 254, 1) 100%);
 }
 
-.bg-gradient-blue {
-  background: rgb(25, 19, 47);
-  background: linear-gradient(135deg, rgba(25, 19, 47, 1) 0%, rgba(51, 44, 74, 1) 100%);
+.bg-gradient-dark {
+  background: rgb(46, 16, 101);
+  background: linear-gradient(135deg, rgba(46, 16, 101, 1) 0%, rgba(76, 29, 149, 1) 100%);
 }
-
-/* .title {
-  color: #f7cfc8;
-  font-family: "Exo 2", sans-serif;
-  font-size: 50px;
-  line-height: 80px;
-  text-align: start;
-  width: 100%;
-} */
 
 .title-wrapper {
   transform: skew(0, -10deg);

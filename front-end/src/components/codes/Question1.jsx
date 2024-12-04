@@ -1,5 +1,8 @@
 import { useState, useContext } from "react"
 import { ApiContext } from '../../context/ApiContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Question1() {
   const { text, setText,
@@ -38,54 +41,47 @@ export default function Question1() {
 
   return (
     <div className="pt-10">
-      <p className="text-white">Bem-vindo ao Code Quest, um jogo interativo onde você ajuda um gato esperto a superar desafios e alcançar seus objetivos escrevendo códigos de programação! Aprenda e pratique lógica de programação de forma divertida enquanto explora diferentes missões com o nosso protagonista felino.</p>
+      <p className="text-white">Bem-vindo ao Code Quest, um jogo interativo onde você ajuda um gato esperto a superar desafios e alcançar seus objetivos escrevendo códigos de programação!</p>
       <p className="text-white mt-5">O gato precisa alcançar a latinha de comida, localizada à direita. Preencha a lacuna com o número correto de passos para que o gato chegue até a latinha.</p>
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <div
-          style={{
-            fontFamily: "monospace",
-            textAlign: "left",
-            display: "inline-block",
-            background: "#f4f4f4",
-            padding: "20px",
-            borderRadius: "8px",
-          }}
-        >
+
+
+
+      <div className="text-center mt-24 w-full" >
+
+
+
+        <div className="font-mono text-left inline-block bg-gray-100 p-5 rounded-lg">
           <p>
-            <span style={{ color: "blue" }}>for</span> (<span style={{ color: "orange" }}>let</span>{" "}
-            i = 0; i &lt;{" "}
+            <span className="text-blue-500">for</span>(
+            <span className="text-orange-500">left</span> i= 0; i &lt;
             <input
               type="text"
               value={inputValue}
               onChange={handleInputChange}
               placeholder="___"
-              style={{
-                width: "40px",
-                fontFamily: "monospace",
-                fontSize: "16px",
-                padding: "2px",
-                textAlign: "center",
-              }}
+              className="w-10 font-mono text-base p-1 text-center border border-gray-300 rounded"
             />
             ; i++) {"{"}
           </p>
-          <p style={{ paddingLeft: "20px" }}>moverGato("direita", {inputValue})</p>
+          <p className="pl-5">moverGato("direita", {inputValue})</p>
           <p>{"}"}</p>
         </div>
-        <div>
+
+        <div className="flex justify-center">
           <button
             onClick={handleMove}
-            style={{
-              marginTop: "20px",
-              padding: "10px 20px",
-              fontSize: "16px",
-              cursor: "pointer",
-            }}
+            className="px-5 py-2 mt-5 text-sm border-1 hover:bg-purple-600 hover:text-white text-purple-500 bg-white rounded duration-500 shadow-lg"
           >
-            Executar
+            <FontAwesomeIcon icon={faPlay} />
           </button>
         </div>
+
+
       </div>
+
+
+
     </div>
   )
 }
+

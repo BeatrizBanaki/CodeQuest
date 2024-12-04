@@ -7,12 +7,14 @@ export default function Code() {
 
 
   return (
-    <div className="w-full h-full bg-gradient-orange p-10">
-      <div className="title-wrapper">
-        <h1 class="sweet-title">
-          <span data-text="Code">Code</span>
-          <span data-text="Quest">Quest</span>
-        </h1>
+    <div className="w-full h-full bg-gradient-light p-10">
+      <div className="w-full flex justify-center">
+        <div className="title-wrapper">
+          <h1 class="sweet-title">
+            <span data-text="Code">Code</span>
+            <span data-text="Quest">Quest</span>
+          </h1>
+        </div>
       </div>
       <Question1></Question1>
     </div>

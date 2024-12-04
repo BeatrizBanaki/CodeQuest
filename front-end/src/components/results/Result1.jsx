@@ -36,46 +36,18 @@ export default function Result1() {
 
   return (
     <>
-      <div style={{ marginTop: "20px" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "10px",
-          }}
+      <div className="mt-5">
+        <div className="flex justify-center items-center gap-2"
         >
           {[...Array(6)].map((_, index) => (
-            <div
-              key={index}
-              style={{
-                width: "160px",
-                height: "80px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                position: "relative",
-              }}
-            >
+            <div key={index} className="w-28 h-20 flex justify-center items-center border border-gray-300 rounded-lg relative">
               {index === currentPosition && (
-                <div
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                  }}
-                >
+                <div className="w-16 h-16">
                   {catMoodPosition(currentPosition)}
                 </div>
               )}
               {index === 5 && (
-                <div
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                  }}
-                >
+                <div className="w-16 h-16">
                   <img src={food} alt="comida de gato" />
                 </div>
               )}
@@ -83,7 +55,8 @@ export default function Result1() {
           ))}
         </div>
         {feedback && (
-          <p style={{ fontSize: "18px", textAlign: 'center', marginTop: '15px', color: feedback.includes("Sucesso") ? "green" : "red" }}>
+          <p className={`text-lg text-center mt-3 ${feedback.includes("Sucesso") ? "text-green-500" : "text-red-500"
+            }`}>
             {feedback}
           </p>
         )}
