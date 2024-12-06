@@ -33,7 +33,6 @@ export default function Result1() {
     }
   }
 
-
   return (
     <>
       <div className="mt-5">

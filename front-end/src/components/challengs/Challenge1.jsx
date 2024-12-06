@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { ApiContext } from '../../context/ApiContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
@@ -38,6 +38,10 @@ export default function Challenge1() {
     }
 
   };
+
+  useEffect(() => {
+    setInputValue("")
+  }, [])
 
   return (
     <div className="pt-10">

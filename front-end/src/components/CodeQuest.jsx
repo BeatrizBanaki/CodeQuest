@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Code from './challengs/Code';
 import Result from './results/Result';
+import Result1 from './results/Result1';
+import Result2 from './results/Result2';
 import Challenge1 from './challengs/Challenge1';
 import Challenge2 from './challengs/Challenge2';
-import Result1 from './results/Result1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +19,7 @@ export default function CodeQuest() {
 
     {
       component: <Challenge2 />,
-      result: <Result1 />
+      result: <Result2 />
     }
   ];
 
