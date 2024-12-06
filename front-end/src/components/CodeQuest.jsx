@@ -2,6 +2,7 @@ import { useState } from "react";
 import Code from './challengs/Code';
 import Result from './results/Result';
 import Challenge1 from './challengs/Challenge1';
+import Challenge2 from './challengs/Challenge2';
 import Result1 from './results/Result1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,11 @@ export default function CodeQuest() {
   const challenges = [
     {
       component: <Challenge1 />,
+      result: <Result1 />
+    },
+
+    {
+      component: <Challenge2 />,
       result: <Result1 />
     }
   ];
