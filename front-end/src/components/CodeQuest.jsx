@@ -5,6 +5,7 @@ import Result1 from './results/Result1';
 import Result2 from './results/Result2';
 import Challenge1 from './challengs/Challenge1';
 import Challenge2 from './challengs/Challenge2';
+import Challenge3 from './challengs/Challenge3';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,7 +21,13 @@ export default function CodeQuest() {
     {
       component: <Challenge2 />,
       result: <Result2 />
+    },
+
+    {
+      component: <Challenge3 />,
+      result: <Result1 />
     }
+
   ];
 
   const goToNextChallenge = () => {
