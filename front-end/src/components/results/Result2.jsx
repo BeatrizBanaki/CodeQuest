@@ -11,7 +11,6 @@ import sleep from "../../assets/images/sleep.png";
 export default function Result2() {
   const { currentPosition, feedback, inputValue } = useContext(ApiContext);
 
-  // Função que determina o estado emocional do gato
   const bgColor = (position) => {
     switch (position) {
       case 0:
@@ -39,7 +38,6 @@ export default function Result2() {
     }
   }
 
-  // Define as cores de fundo para os espaços (em português)
   const spaces = ["laranja", "vermelho", "verde", "azul", "amarelo", "roxo"];
 
   return (
@@ -49,9 +47,6 @@ export default function Result2() {
           <div
             key={index}
             className={`w-28 h-20 flex justify-center items-center border border-gray-300 rounded-lg relative ${bgColor(index)}`}
-          // style={{
-          //   backgroundColor: bgColor(index),
-          // }}
           >
             {index === currentPosition && (
               <div className="w-16 h-16">{catMoodPosition(currentPosition)}</div>

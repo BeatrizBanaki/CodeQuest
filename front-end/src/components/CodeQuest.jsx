@@ -3,6 +3,7 @@ import Code from './challengs/Code';
 import Result from './results/Result';
 import Result1 from './results/Result1';
 import Result2 from './results/Result2';
+import Result3 from './results/Result3';
 import Challenge1 from './challengs/Challenge1';
 import Challenge2 from './challengs/Challenge2';
 import Challenge3 from './challengs/Challenge3';
@@ -25,7 +26,7 @@ export default function CodeQuest() {
 
     {
       component: <Challenge3 />,
-      result: <Result1 />
+      result: <Result3 />
     }
 
   ];
@@ -47,7 +48,7 @@ export default function CodeQuest() {
       <Code>
         <div>
           {challenges[currentChallenge].component}
-          <div className="flex gap-3 mt-16 justify-center">
+          <div className="flex gap-3 mt-8 justify-center">
             <button
               onClick={goToPreviousChallenge}
               disabled={currentChallenge === 0}
