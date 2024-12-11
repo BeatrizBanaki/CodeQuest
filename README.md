@@ -47,3 +47,5 @@ Para dúvidas ou sugestões, entre em contato:
 
 **Divirta-se aprendendo lógica de programação com o nosso jogo!**
 
+## Planejamento
+- https://app.clickup.com/9011514591/v/f/90113643524/90111940119
