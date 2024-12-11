@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { ApiContext } from "../../context/ApiContext";
 import worry from "../../assets/images/worry.png";
-import smirk from "../../assets/images/smirk.png";
+import shy from "../../assets/images/shy.png";
 import smile2 from "../../assets/images/smile2.png";
 import hearts from "../../assets/images/hearts.png";
 import hug from "../../assets/images/hug.png";
@@ -11,8 +11,7 @@ export default function Result3() {
   const [localPosition1, setLocalPosition1] = useState(0);
   const [localPosition2, setLocalPosition2] = useState(5);
   const areAdjacent =
-    Math.abs(localPosition1 - localPosition2) === 1 &&
-    feedback.includes("Parabéns");
+    Math.abs(localPosition1 - localPosition2) === 1;
 
   useEffect(() => {
     const [pos1, pos2] = inputValue.split(",").map(Number);
@@ -40,13 +39,13 @@ export default function Result3() {
                     <img src={hearts} alt="Gato 1 com coração" className="w-16 h-16" />
                   )}
                   {index === localPosition2 && (
-                    <img src={hug} alt="Gato 2 sorrindo" className="w-16 h-16" />
+                    <img src={hug} alt="Gato 2 com coração" className="w-16 h-16" />
                   )}
                 </>
               ) : (
                 <>
                   {index === localPosition1 && (
-                    <img src={smirk} alt="Gato 1" className="w-16 h-16" />
+                    <img src={shy} alt="Gato 1" className="w-16 h-16" />
                   )}
                   {index === localPosition2 && (
                     <img src={smile2} alt="Gato 2" className="w-16 h-16" />

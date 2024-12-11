@@ -4,9 +4,11 @@ import Result from './results/Result';
 import Result1 from './results/Result1';
 import Result2 from './results/Result2';
 import Result3 from './results/Result3';
+import Result4 from './results/Result4';
 import Challenge1 from './challengs/Challenge1';
 import Challenge2 from './challengs/Challenge2';
 import Challenge3 from './challengs/Challenge3';
+import Challenge4 from './challengs/Challenge4';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,8 +29,12 @@ export default function CodeQuest() {
     {
       component: <Challenge3 />,
       result: <Result3 />
-    }
+    },
 
+    {
+      component: <Challenge4 />,
+      result: <Result4 />
+    }
   ];
 
   const goToNextChallenge = () => {
@@ -48,7 +54,7 @@ export default function CodeQuest() {
       <Code>
         <div>
           {challenges[currentChallenge].component}
-          <div className="flex gap-3 mt-8 justify-center">
+          <div className="flex gap-3 mt-10 justify-center">
             <button
               onClick={goToPreviousChallenge}
               disabled={currentChallenge === 0}
