@@ -11,6 +11,7 @@ import Challenge3 from './challengs/Challenge3';
 import Challenge4 from './challengs/Challenge4';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function CodeQuest() {
   const [currentChallenge, setCurrentChallenge] = useState(0);
@@ -75,6 +76,9 @@ export default function CodeQuest() {
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
+            <Link to="/content" className="mt-4 inline-block text-blue-500 hover:underline">
+              Ver explicações de conteúdo
+            </Link>
           </div>
         </div>
       </Code>
