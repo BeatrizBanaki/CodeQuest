@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
 import { ApiContext } from '../../context/ApiContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Challenge3() {
   const { feedback, setFeedback, setInputValue } = useContext(ApiContext);
@@ -45,39 +46,47 @@ export default function Challenge3() {
       <p className="text-white mt-5">Complete com os índices das posições desejadas:</p>
 
       <div className="mt-5 text-center">
-        <div className="font-mono text-left inline-block bg-gray-100 p-5 rounded-lg relative">
-          <p>
-            <span className="text-blue-500">function</span> gatosJuntos(array, pos1, pos2) {"{"}
-          </p>
-          <p className="pl-5">array[pos1] = "gato";</p>
-          <p className="pl-5">array[pos2] = "gato";</p>
-          <p className="pl-5">
-            <span className="text-blue-500">for</span> (let i = 0; i &lt; array.length - 1; i++) {"{"}
-          </p>
-          <p className="pl-10">
-            <span className="text-blue-500">if</span> (array[
-            <input
-              type="text"
-              value={pos1}
-              onChange={(e) => setPos1(e.target.value)}
-              placeholder="i"
-              className="w-10 text-center border border-gray-300 rounded"
-            />
-            ] === "gato" && array[
-            <input
-              type="text"
-              value={pos2}
-              onChange={(e) => setPos2(e.target.value)}
-              placeholder="i+1"
-              className="w-10 text-center border border-gray-300 rounded"
-            />
-            ] === "gato") {"{"}
-          </p>
-          <p className="pl-15">return "Gatos juntos! Parabéns!";</p>
-          <p className="pl-10">{"}"}</p>
-          <p className="pl-5">{"}"}</p>
-          <p className="pl-5">return "Tente novamente!";</p>
-          <p>{"}"}</p>
+        <div className="font-mono text-left inline-block bg-gray-100 rounded-lg relative">
+          <div className="pt-5 px-5">
+            <p>
+              <span className="text-blue-500">function</span> gatosJuntos(array, pos1, pos2) {"{"}
+            </p>
+            <p className="pl-5">array[pos1] = "gato";</p>
+            <p className="pl-5">array[pos2] = "gato";</p>
+            <p className="pl-5">
+              <span className="text-blue-500">for</span> (let i = 0; i &lt; array.length - 1; i++) {"{"}
+            </p>
+            <p className="pl-10">
+              <span className="text-blue-500">if</span> (array[
+              <input
+                type="text"
+                value={pos1}
+                onChange={(e) => setPos1(e.target.value)}
+                placeholder="i"
+                className="w-10 text-center border border-gray-300 rounded"
+              />
+              ] === "gato" && array[
+              <input
+                type="text"
+                value={pos2}
+                onChange={(e) => setPos2(e.target.value)}
+                placeholder="i+1"
+                className="w-10 text-center border border-gray-300 rounded"
+              />
+              ] === "gato") {"{"}
+            </p>
+            <p className="pl-15">return "Gatos juntos! Parabéns!";</p>
+            <p className="pl-10">{"}"}</p>
+            <p className="pl-5">{"}"}</p>
+            <p className="pl-5">return "Tente novamente!";</p>
+            <p>{"}"}</p>
+          </div>
+          <div className="w-full flex justify-end items-center pr-2 pb-1">
+            <Link to="/content" className={`text-blue-500 duration-500"
+                }`}>
+              <FontAwesomeIcon icon={faCircleInfo} />
+            </Link>
+          </div>
         </div>
         <button
           onClick={handleSubmit}

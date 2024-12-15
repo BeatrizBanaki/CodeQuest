@@ -10,7 +10,7 @@ import Challenge2 from './challengs/Challenge2';
 import Challenge3 from './challengs/Challenge3';
 import Challenge4 from './challengs/Challenge4';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronLeft, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 export default function CodeQuest() {
@@ -35,6 +35,30 @@ export default function CodeQuest() {
     {
       component: <Challenge4 />,
       result: <Result4 />
+    },
+
+    {
+      result: <Result />
+    },
+
+    {
+      result: <Result />
+    },
+
+    {
+      result: <Result />
+    },
+
+    {
+      result: <Result />
+    },
+
+    {
+      result: <Result />
+    },
+
+    {
+      result: <Result />
     }
   ];
 
@@ -76,9 +100,6 @@ export default function CodeQuest() {
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
-            <Link to="/content" className="mt-4 inline-block text-blue-500 hover:underline">
-              Ver explicações de conteúdo
-            </Link>
           </div>
         </div>
       </Code>

@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import { ApiContext } from '../../context/ApiContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Challenge2() {
   const {
@@ -36,26 +37,34 @@ export default function Challenge2() {
       <p className="text-white mt-5">Complete o código para verificar a cor:</p>
 
       <div className="text-center mt-10 w-full">
-        <div className="font-mono text-left inline-block bg-gray-100 p-5 rounded-lg">
-          <p>
-            <span className="text-blue-500">function</span>{" "}
-            escolherLugar(cor) {"{"}
-          </p>
-          <p className="pl-5">
-            <span className="text-blue-500">if</span> (cor ==={" "}
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              className="w-28 font-mono text-base p-1 text-center border border-gray-300 rounded"
-            />
-            ) {"{"}
-          </p>
-          <p className="pl-10">return "Gatinho dormindo!";</p>
-          <p className="pl-5">{"}"} else {"{"}</p>
-          <p className="pl-10">return "Gatinho acordado.";</p>
-          <p className="pl-5">{"}"}</p>
-          <p>{"}"}</p>
+        <div className="font-mono text-left inline-block bg-gray-100 rounded-lg">
+          <div className="pt-5 px-5">
+            <p>
+              <span className="text-blue-500">function</span>{" "}
+              escolherLugar(cor) {"{"}
+            </p>
+            <p className="pl-5">
+              <span className="text-blue-500">if</span> (cor ==={" "}
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                className="w-28 font-mono text-base p-1 text-center border border-gray-300 rounded"
+              />
+              ) {"{"}
+            </p>
+            <p className="pl-10">return "Gatinho dormindo!";</p>
+            <p className="pl-5">{"}"} else {"{"}</p>
+            <p className="pl-10">return "Gatinho acordado.";</p>
+            <p className="pl-5">{"}"}</p>
+            <p>{"}"}</p>
+          </div>
+          <div className="w-full flex justify-end items-center pr-2 pb-1">
+            <Link to="/content" className={`text-blue-500 duration-500"
+                }`}>
+              <FontAwesomeIcon icon={faCircleInfo} />
+            </Link>
+          </div>
         </div>
         <div className="flex justify-center">
           <button
