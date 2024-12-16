@@ -5,10 +5,12 @@ import Result1 from './results/Result1';
 import Result2 from './results/Result2';
 import Result3 from './results/Result3';
 import Result4 from './results/Result4';
+import Result5 from './results/Result5';
 import Challenge1 from './challengs/Challenge1';
 import Challenge2 from './challengs/Challenge2';
 import Challenge3 from './challengs/Challenge3';
 import Challenge4 from './challengs/Challenge4';
+import Challenge5 from './challengs/Challenge5';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -38,7 +40,8 @@ export default function CodeQuest() {
     },
 
     {
-      result: <Result />
+      component: <Challenge5 />,
+      result: <Result5 />
     },
 
     {
