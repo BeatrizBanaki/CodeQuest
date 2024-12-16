@@ -8,10 +8,9 @@ import poop from "../../assets/images/poop.png";
 export default function Result5() {
   const { inputValue } = useContext(ApiContext);
   const caminho = ["obstaculo", "obstaculo", "livre", "obstaculo"];
-  const fileiras = 4; // Número total de fileiras
+  const fileiras = 4;
   const espacos = 6;
 
-  // Função para verificar o caminho
   const verificarCaminho = (posicao) => {
     if (isNaN(posicao) || posicao < 0 || posicao >= fileiras) {
       return "invalida";
@@ -43,16 +42,7 @@ export default function Result5() {
                   {isLastColumn && (
                     <img src={mousetoy} alt="Recompensa do gato" className="w-14 h-14" />
                   )}
-                  {isBlocked && colIndex === 1 && (
-                    <img src={poop} alt="Obstáculo" className="w-14 h-14" />
-                  )}
-                  {isBlocked && colIndex === 2 && (
-                    <img src={poop} alt="Obstáculo" className="w-14 h-14" />
-                  )}
-                  {isBlocked && colIndex === 3 && (
-                    <img src={poop} alt="Obstáculo" className="w-14 h-14" />
-                  )}
-                  {isBlocked && colIndex === 4 && (
+                  {isBlocked && (colIndex > 0 && colIndex < 5) && (
                     <img src={poop} alt="Obstáculo" className="w-14 h-14" />
                   )}
                   {isSelected && colIndex === 0 && <img src={tears} alt="Gatinho" className="w-14 h-14" />}
