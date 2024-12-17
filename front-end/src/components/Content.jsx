@@ -44,17 +44,17 @@ const Content = () => {
 
   // Função para substituir \n por <br />
   const formatText = (text) => {
-    return text.split("\n").map((line, index) => (
+    return text.split("\\n").map((line, index) => (
       <span key={index}>
         {line}
-        <br />
+        <br></br>
       </span>
     ));
   };
 
   // Formatação do código para garantir que ele exiba corretamente
   const formatCode = (code) => {
-    return code.split("\n").map((line, index) => (
+    return code.split("\\n").map((line, index) => (
       <span key={index}>
         {line}
         <br />
