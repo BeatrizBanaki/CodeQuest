@@ -2,112 +2,134 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Content = () => {
-    const [contents, setContents] = useState([]); // Lista de conteúdos
-    const [selectedContent, setSelectedContent] = useState(null); // Conteúdo selecionado
-    const [explanations, setExplanations] = useState([]); // Explicações do conteúdo selecionado
-    const [loading, setLoading] = useState(true); // Controle de carregamento
+  const [contents, setContents] = useState([]); // Lista de conteúdos
+  const [selectedContent, setSelectedContent] = useState(null); // Conteúdo selecionado
+  const [explanations, setExplanations] = useState([]); // Explicações do conteúdo selecionado
+  const [loading, setLoading] = useState(true); // Controle de carregamento
 
+  useEffect(() => {
+    fetch('/api/contents')
+      .then((response) => response.json())
+      .then((data) => {
+        setContents(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Erro ao carregar conteúdos:', error);
+        setLoading(false);
+      });
+  }, []);
 
-    // Carregar conteúdos ao montar o componente
-    useEffect(() => {
-        fetch('/api/contents')
-            .then((response) => response.json())
-            .then((data) => {
-                setContents(data); // Salvar os conteúdos no estado
-                setLoading(false); // Parar o carregamento
-            })
-            .catch((error) => {
-                console.error('Erro ao carregar conteúdos:', error);
-                setLoading(false);
-            });
-    }, []);
+  const loadContent = (id) => {
+    setLoading(true);
 
-    // Função para carregar um conteúdo pelo ID
-    const loadContent = (id) => {
-        setLoading(true);
+    fetch(`/api/contents/${id}`)
+      .then((response) => response.json())
+      .then((content) => {
+        setSelectedContent(content);
 
-        // Buscar o conteúdo
-        fetch(`/api/contents/${id}`)
-            .then((response) => response.json())
-            .then((content) => {
-                setSelectedContent(content); // Salvar o conteúdo selecionado
+        return fetch(`/api/explanations/content/${id}`);
+      })
+      .then((response) => response.json())
+      .then((explanations) => {
+        setExplanations(explanations);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Erro ao carregar conteúdo ou explicações:', error);
+        setLoading(false);
+      });
+  };
 
-                // Buscar explicações relacionadas ao conteúdo
-                return fetch(`/api/explanations/content/${id}`);
-            })
-            .then((response) => response.json())
-            .then((explanations) => {
-                setExplanations(explanations); // Salvar as explicações
-                setLoading(false); // Parar o carregamento
-            })
-            .catch((error) => {
-                console.error('Erro ao carregar conteúdo ou explicações:', error);
-                setLoading(false);
-            });
-    };
+  // Função para substituir \n por <br />
+  const formatText = (text) => {
+    return text.split("\n").map((line, index) => (
+      <span key={index}>
+        {line}
+        <br />
+      </span>
+    ));
+  };
 
-    // Renderizar enquanto carrega
-    if (loading) {
-        return <p>Carregando...</p>;
-    }
+  // Formatação do código para garantir que ele exiba corretamente
+  const formatCode = (code) => {
+    return code.split("\n").map((line, index) => (
+      <span key={index}>
+        {line}
+        <br />
+      </span>
+    ));
+  };
 
+  if (loading) {
     return (
-        <div style={{ display: 'flex', gap: '20px' }}>
-            {/* Lista de conteúdos */}
-            <div style={{ flex: '1', borderRight: '1px solid #ccc', paddingRight: '20px' }}>
-                <h2>Conteúdos</h2>
-                <ul style={{ listStyle: 'none', padding: 0 }}>
-                    {contents.map((content) => (
-                        <li key={content.id}>
-                            <button
-                                onClick={() => loadContent(content.id)}
-                                style={{
-                                    backgroundColor: selectedContent?.id === content.id ? '#ccc' : 'transparent',
-                                    border: 'none',
-                                    padding: '10px',
-                                    textAlign: 'left',
-                                    width: '100%',
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                {content.name}
-                            </button>
-                        </li>
-                    ))}
-                    <li>
-                        <Link to="/" className="mt-4 inline-block text-blue-500 hover:underline">
-                            Desafios
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-
-            {/* Detalhes do conteúdo */}
-            <div style={{ flex: '2' }}>
-                {selectedContent ? (
-                    <>
-                        <h2>{selectedContent.name}</h2>
-                        <p>{selectedContent.explanation}</p>
-                        <pre>
-                            <code>{selectedContent.example}</code>
-                        </pre>
-
-                        <h3>Explicações Relacionadas</h3>
-                        <ul>
-                            {explanations.map((explanation) => (
-                                <li key={explanation.id}>
-                                    <h4>{explanation.title}</h4>
-                                    <p>{explanation.explanation}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </>
-                ) : (
-                    <p>Selecione um conteúdo para ver mais detalhes.</p>
-                )}
-            </div>
-        </div>
+      <div className="flex flex-col items-center justify-center h-screen w-screen bg-gradient-light">
+        {/* Spinner */}
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600 border-opacity-50"></div>
+        {/* Texto */}
+        <p className="mt-4 text-purple-700 font-semibold text-lg">Carregando...</p>
+      </div>
     );
+  }
+
+  return (
+    <div className="w-screen flex flex-row h-screen bg-gradient-light">
+      {/* Lista de conteúdos */}
+      <aside className="w-1/4 p-4 bg-gradient-dark text-white shadow-lg flex flex-col">
+        <div className="w-full flex justify-center mb-10">
+          <div className="title-wrapper">
+            <h1 className="sweet-title">
+              <span data-text="Code">Code</span>
+              <span data-text="Quest">Quest</span>
+            </h1>
+          </div>
+        </div>
+
+        <ul className="w-4/4 space-y-3 flex-grow overflow-y-auto">
+          {contents.map((content) => (
+            <li key={content.id}>
+              <button
+                onClick={() => loadContent(content.id)}
+                className={`card ${selectedContent?.id === content.id ? 'selected' : ''}`}
+              >
+                {content.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <Link to="/" className="link-desafios mt-6">
+          Desafios
+        </Link>
+      </aside>
+
+      {/* Detalhes do conteúdo */}
+      <section className="w-3/4 p-6 bg-white shadow-lg overflow-y-auto">
+        {selectedContent ? (
+          <>
+            <h2 className="text-2xl font-bold mb-4 text-purple-700">{selectedContent.name}</h2>
+            <p className="mb-4">{formatText(selectedContent.explanation)}</p>
+            <div className="code-block mb-6">
+              <pre className="bg-gray-800 p-4 text-white rounded-lg">
+                <code>{formatCode(selectedContent.example)}</code>
+              </pre>
+            </div>
+
+            <h3 className="text-xl font-bold mb-2 text-purple-700">Explicações Relacionadas</h3>
+            <ul className="space-y-3">
+              {explanations.map((explanation) => (
+                <li key={explanation.id} className="p-3 bg-gray-100 rounded-lg shadow">
+                  <h4 className="text-lg font-semibold text-purple-600">{explanation.title}</h4>
+                  <p>{formatText(explanation.explanation)}</p>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <p className="text-gray-600">Selecione um conteúdo para ver mais detalhes.</p>
+        )}
+      </section>
+    </div>
+  );
 };
 
 export default Content;
