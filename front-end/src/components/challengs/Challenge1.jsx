@@ -46,8 +46,8 @@ export default function Challenge1() {
 
   return (
     <div className="pt-10">
-      <p className="text-white">Bem-vindo ao Code Quest, um jogo interativo onde você ajuda um gato esperto a superar desafios e alcançar seus objetivos escrevendo códigos de programação!</p>
-      <p className="text-white mt-5">O gato precisa alcançar a latinha de comida, localizada à direita. Preencha a lacuna com o número correto de passos para que o gato chegue até a latinha.</p>
+      <p className="text-white mt-5">O gato precisa alcançar a latinha de comida, localizada à direita. </p>
+      <p className="text-white mt-5">Preencha a lacuna com o número correto de passos para que o gato chegue até a latinha.</p>
       <div className="text-center mt-24 w-full" >
         <div className="font-mono text-left inline-block bg-gray-100 rounded-lg">
           <div className="pt-5 px-5">
