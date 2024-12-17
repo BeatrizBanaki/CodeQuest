@@ -6,7 +6,7 @@ export default defineConfig({
   base: "CodeQuest",
   server: {
     proxy: {
-      '/api': 'http://localhost:3000', // Redireciona chamadas para o backend
+      '/api': 'http://52.67.153.90:3000', // Redireciona chamadas para o backend
     },
   },
 });
