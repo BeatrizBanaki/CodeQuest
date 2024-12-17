@@ -4,7 +4,7 @@ import Content from './components/Content';
 
 function App() {
   return (
-    <Router>
+    <Router basename={"CodeQuest"}>
       <div className="w-[100vw] h-[100vh] flex">
         <Routes>
           <Route path="/" element={<CodeQuest />} />
