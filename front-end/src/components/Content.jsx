@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import config from '../config';
 
 const Content = () => {
   const [contents, setContents] = useState([]); // Lista de conteúdos
@@ -8,7 +9,7 @@ const Content = () => {
   const [loading, setLoading] = useState(true); // Controle de carregamento
 
   useEffect(() => {
-    fetch('/api/contents')
+    fetch(`${config.apiBaseUrl}/contents`)
       .then((response) => response.json())
       .then((data) => {
         setContents(data);
@@ -23,12 +24,12 @@ const Content = () => {
   const loadContent = (id) => {
     setLoading(true);
 
-    fetch(`/api/contents/${id}`)
+    fetch(`${config.apiBaseUrl}/contents/${id}`)
       .then((response) => response.json())
       .then((content) => {
         setSelectedContent(content);
 
-        return fetch(`/api/explanations/content/${id}`);
+        return fetch(`${config.apiBaseUrl}/explanations/content/${id}`);
       })
       .then((response) => response.json())
       .then((explanations) => {
