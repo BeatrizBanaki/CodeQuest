@@ -12,9 +12,13 @@ export default function Result5() {
   const espacos = 6;
 
   const verificarCaminho = (posicao) => {
-    if (isNaN(posicao) || posicao < 0 || posicao >= fileiras) {
+    if (posicao === "" || isNaN(posicao)) {
+      return null;
+    }
+    if (posicao < 0 || posicao >= fileiras) {
       return "invalida";
     }
+
     return caminho[posicao] === "livre" ? "livre" : "bloqueado";
   };
 
