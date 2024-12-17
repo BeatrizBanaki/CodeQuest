@@ -32,10 +32,14 @@ export default function Challenge2() {
     <div className="pt-10">
       <p className="text-white">Bem-vindo ao Code Quest, um jogo interativo onde você ajuda um gato esperto a superar desafios e alcançar seus objetivos escrevendo códigos de programação!</p>
       <p className="text-white mt-5">
-        O gato precisa escolher um lugar azul para dormir. Ele ignora qualquer
-        lugar que não seja azul.
+        O gato está procurando o lugar perfeito para dormir.
       </p>
-      <p className="text-white mt-5">Complete o código para verificar a cor:</p>
+      <ul className="list-disc ml-8 text-white">
+        <li>
+          Complete o código no espaço indicado para verificar corretamente as cores e ajudar o gato a encontrar o lugar ideal para descansar.
+        </li>
+      </ul>
+      <p className="text-white mt-5">Descubra a lógica correta e ajude o gato a encontrar o lugar azul para dormir:</p>
 
       <div className="text-center mt-10 w-full">
         <div className="font-mono text-left inline-block bg-gray-100 rounded-lg">

@@ -46,9 +46,14 @@ export default function Challenge1() {
 
   return (
     <div className="pt-10">
-      <p className="text-white mt-5">O gato precisa alcançar a latinha de comida, localizada à direita. </p>
-      <p className="text-white mt-5">Preencha a lacuna com o número correto de passos para que o gato chegue até a latinha.</p>
-      <div className="text-center mt-24 w-full" >
+      <p className="text-white mt-5">O gato está tentando alcançar sua latinha de comida, que está localizada à direita. Para que o gato chegue até a latinha, você precisa preencher o código com o número correto de passos.</p>
+      <ul className="list-disc ml-8 text-white">
+        <li>
+          Complete o código no espaço indicado e ajude o gato a chegar até sua refeição.
+        </li>
+      </ul>
+      <p className="text-white mt-5">Descubra a lógica correta e ajude o gato a alcançar a latinha de comida à direita:</p>
+      <div className="text-center mt-10 w-full" >
         <div className="font-mono text-left inline-block bg-gray-100 rounded-lg">
           <div className="pt-5 px-5">
             <p>
