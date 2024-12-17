@@ -6,6 +6,7 @@ import Result2 from './results/Result2';
 import Result3 from './results/Result3';
 import Result4 from './results/Result4';
 import Result5 from './results/Result5';
+import Result6 from './results/Result6';
 import Challenge1 from './challengs/Challenge1';
 import Challenge2 from './challengs/Challenge2';
 import Challenge3 from './challengs/Challenge3';
@@ -47,7 +48,7 @@ export default function CodeQuest() {
 
     {
       component: <Challenge6 />,
-      result: <Result />
+      result: <Result6 />
     },
 
     {

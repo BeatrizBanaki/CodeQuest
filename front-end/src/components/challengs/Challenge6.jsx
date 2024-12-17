@@ -18,10 +18,7 @@ export default function Challenge6() {
         O gato tem vários brinquedos espalhados. Sua tarefa é contar quantos são bolas.
         <ul className="list-disc ml-8">
           <li>
-            Complete o código no espaço indicado para identificar corretamente os brinquedos "bola".
-          </li>
-          <li>
-            O código utiliza um laço for para verificar todos os itens do array.
+            Complete o código no espaço indicado para identificar corretamente os brinquedos.
           </li>
         </ul>
       </p>
@@ -30,7 +27,7 @@ export default function Challenge6() {
         <div className="font-mono text-left inline-block bg-gray-100 rounded-lg relative">
           <div className="pt-5 px-5">
             <p>
-              <span className="text-blue-500">let</span> brinquedos = ["bola", "ratinho", "bola", "corda", "bola", "bola"];
+              <span className="text-blue-500">let</span> brinquedos = ["bola", "ratinho", "bola", "osso", "bola", "osso"];
             </p>
             <p>
               <span className="text-blue-500">function</span> contarBolas(array) {"{"}
@@ -47,8 +44,8 @@ export default function Challenge6() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder='"bola"'
-                className="w-16 text-center border border-gray-300 rounded"
+                placeholder='bola'
+                className="w-24 text-center border border-gray-300 rounded"
               />
               ) {"{"}
             </p>
