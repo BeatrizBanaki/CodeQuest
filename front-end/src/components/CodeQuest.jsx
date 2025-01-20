@@ -6,11 +6,13 @@ import Result2 from './results/Result2';
 import Result3 from './results/Result3';
 import Result4 from './results/Result4';
 import Result5 from './results/Result5';
+import Result6 from './results/Result6';
 import Challenge1 from './challengs/Challenge1';
 import Challenge2 from './challengs/Challenge2';
 import Challenge3 from './challengs/Challenge3';
 import Challenge4 from './challengs/Challenge4';
 import Challenge5 from './challengs/Challenge5';
+import Challenge6 from './challengs/Challenge6';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -20,23 +22,13 @@ export default function CodeQuest() {
 
   const challenges = [
     {
-      component: <Challenge1 />,
-      result: <Result1 />
-    },
-
-    {
       component: <Challenge2 />,
       result: <Result2 />
     },
 
     {
-      component: <Challenge3 />,
-      result: <Result3 />
-    },
-
-    {
-      component: <Challenge4 />,
-      result: <Result4 />
+      component: <Challenge1 />,
+      result: <Result1 />
     },
 
     {
@@ -45,23 +37,18 @@ export default function CodeQuest() {
     },
 
     {
-      result: <Result />
+      component: <Challenge6 />,
+      result: <Result6 />
     },
 
     {
-      result: <Result />
+      component: <Challenge4 />,
+      result: <Result4 />
     },
 
     {
-      result: <Result />
-    },
-
-    {
-      result: <Result />
-    },
-
-    {
-      result: <Result />
+      component: <Challenge3 />,
+      result: <Result3 />
     }
   ];
 
