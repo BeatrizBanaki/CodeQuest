@@ -6,6 +6,7 @@ const Content = () => {
   const [contents, setContents] = useState([]); // Lista de conteúdos
   const [selectedContent, setSelectedContent] = useState(null); // Conteúdo selecionado
   const [explanations, setExplanations] = useState([]); // Explicações do conteúdo selecionado
+  const [videoContent, setVideoContent] = useState(null); // Explicações do conteúdo selecionado
   const [loading, setLoading] = useState(true); // Controle de carregamento
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const Content = () => {
       .then((response) => response.json())
       .then((content) => {
         setSelectedContent(content);
+        setVideoContent(`${config.apiBaseUrl}/contents/video/${id}`);
 
         return fetch(`${config.apiBaseUrl}/explanations/content/${id}`);
       })
@@ -108,6 +110,16 @@ const Content = () => {
         {selectedContent ? (
           <>
             <h2 className="text-2xl font-bold mb-4 text-purple-700">{selectedContent.name}</h2>
+
+            <div className="video-container">
+              <video width="560" height="315" controls>
+                <source src={videoContent} type="video/mp4" />
+                Seu navegador não suporta a tag de vídeo.
+              </video>
+            </div>
+
+
+
             <p className="mb-4">{formatText(selectedContent.explanation)}</p>
             <div className="code-block mb-6">
               <pre className="bg-gray-800 p-4 text-white rounded-lg">

@@ -6,6 +6,7 @@ const contentController = require('../controllers/contentController');
 router.get('/', contentController.list);
 
 // Obter um conteúdo pelo ID
+router.get('/video/:id', contentController.getVideo);
 router.get('/:id', contentController.get);
 
 // Criar um novo conteúdo
