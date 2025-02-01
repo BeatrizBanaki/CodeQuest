@@ -113,7 +113,7 @@ const Content = () => {
 
             <div className="video-container">
               <video width="560" height="315" controls>
-                <source src={videoContent} type="video/mkv" />
+                <source src={videoContent} type="video/mp4" />
                 Seu navegador não suporta a tag de vídeo.
               </video>
             </div>

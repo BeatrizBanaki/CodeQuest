@@ -27,7 +27,7 @@ const contentController = {
   getVideo: (req, res) => {
     const id = req.params.id;
 
-    const videoPath = path.join(__dirname, '../videos', id + '.mkv');
+    const videoPath = path.join(__dirname, '../videos', id + '.mp4');
     if (!fs.existsSync(videoPath)) {
       return res.status(404).send('Vídeo não encontrado.');
     }
@@ -47,7 +47,7 @@ const contentController = {
         'Content-Range': `bytes ${start}-${end}/${fileSize}`,
         'Accept-Ranges': 'bytes',
         'Content-Length': chunksize,
-        'Content-Type': 'video/mkv',
+        'Content-Type': 'video/mp4',
       };
 
       res.writeHead(206, head);
@@ -55,7 +55,7 @@ const contentController = {
     } else {
       const head = {
         'Content-Length': fileSize,
-        'Content-Type': 'video/mkv',
+        'Content-Type': 'video/mp4',
       };
 
       res.writeHead(200, head);
