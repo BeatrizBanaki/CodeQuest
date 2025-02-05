@@ -1,60 +1,64 @@
-import { useState, useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import { ApiContext } from '../../context/ApiContext';
-import { Link } from 'react-router-dom';
+import { useState, useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { ApiContext } from "../../context/ApiContext";
+import { Link } from "react-router-dom";
 
 export default function Challenge4() {
   const { setInputValue } = useContext(ApiContext);
   const [input, setInput] = useState("");
 
   const handleSubmit = () => {
-    setInputValue(input);
+    setInputValue(input.trim());
   };
 
   return (
     <div className="pt-10">
       <p className="text-white">
-        Você tem dois cachorros para alimentar, mas eles estão em posições diferentes no caminho. A comida está na última posição (posição 5), e sua tarefa é movê-los até lá.
+        O gato tem vários brinquedos espalhados. Sua tarefa é contar quantos são bolas.
         <ul className="list-disc ml-8">
           <li>
-            Para mover um cachorro, você deve informar a posição atual dele no caminho.
-          </li>
-          <li>
-            Para alimentar os dois cachorros ao mesmo tempo, você deve percorrer todo o array para descobrir como movê-los juntos.
+            Complete o código no espaço indicado para identificar corretamente os brinquedos.
           </li>
         </ul>
       </p>
-      <p className="text-white mt-5">Descubra a lógica correta e alimente seus amigos peludos:</p>
+      <p className="text-white mt-5">Digite o nome do brinquedo correto e veja o resultado:</p>
       <div className="mt-5 text-center">
         <div className="font-mono text-left inline-block bg-gray-100 rounded-lg relative">
           <div className="pt-5 px-5">
             <p>
-              <span className="text-blue-500">let</span> amigos = ["cachorro1", "cachorro2"];
+              <span className="text-blue-500">let</span> brinquedos = ["bola", "ratinho", "bola", "osso", "bola", "osso"];
             </p>
             <p>
-              <span className="text-blue-500">function</span> alimentarAmigos(array) {"{"}
+              <span className="text-blue-500">function</span> contarBolas(array) {"{"}
             </p>
             <p className="pl-5">
-              <span className="text-blue-500">for</span> (let i = 0; i &lt; array.length; i++) {"{"}
+              <span className="text-blue-500">let</span> contador = 0;
+            </p>
+            <p className="pl-5">
+              <span className="text-blue-500">for</span> (<span className="text-blue-500">let</span> i = 0; i {"<"} array.length; i++) {"{"}
             </p>
             <p className="pl-10">
-              console.log(<span className="text-orange-500">"Alimentando o ${"{"}</span>
+              <span className="text-blue-500">if</span> (array[i] ==={" "}
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="array[i]"
-                className="w-20 text-center border border-gray-300 rounded"
+                placeholder='bola'
+                className="w-24 text-center border border-gray-300 rounded"
               />
-              <span className="text-orange-500">{"}"}"</span>);
+              ) {"{"}
             </p>
+            <p className="pl-14">contador++;</p>
+            <p className="pl-10">{"}"}</p>
             <p className="pl-5">{"}"}</p>
+            <p className="pl-5">
+              <span className="text-purple-500">return</span> contador;
+            </p>
             <p>{"}"}</p>
           </div>
           <div className="w-full flex justify-end items-center pr-2 pb-1">
-            <Link to="/content" className={`text-blue-500 duration-500"
-                }`}>
+            <Link to="/content" className="text-blue-500 duration-500">
               <FontAwesomeIcon icon={faCircleInfo} />
             </Link>
           </div>
@@ -68,6 +72,6 @@ export default function Challenge4() {
           </button>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

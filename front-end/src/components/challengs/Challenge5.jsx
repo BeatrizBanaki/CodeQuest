@@ -15,52 +15,46 @@ export default function Challenge5() {
   return (
     <div className="pt-10">
       <p className="text-white">
-        O gato está tentando chegar ao seu brinquedo, mas existem obstáculos no caminho. Sua tarefa é ajudá-lo a encontrar o caminho livre.
+        Você tem dois cachorros para alimentar, mas eles estão em posições diferentes no caminho. A comida está na última posição (posição 5), e sua tarefa é movê-los até lá.
         <ul className="list-disc ml-8">
           <li>
-            Para verificar um caminho, você deve informar a posição do array a ser checada.
+            Para mover um cachorro, você deve informar a posição atual dele no caminho.
           </li>
           <li>
-            Use a lógica para percorrer o array e descobrir o caminho livre.
+            Para alimentar os dois cachorros ao mesmo tempo, você deve percorrer todo o array para descobrir como movê-los juntos.
           </li>
         </ul>
       </p>
-      <p className="text-white mt-5">Descubra a posição correta e ajude o gato a chegar ao seu brinquedo:</p>
+      <p className="text-white mt-5">Descubra a lógica correta e alimente seus amigos peludos:</p>
       <div className="mt-5 text-center">
         <div className="font-mono text-left inline-block bg-gray-100 rounded-lg relative">
           <div className="pt-5 px-5">
             <p>
-              <span className="text-blue-500">let</span> caminho = ["obstaculo", "obstaculo", "livre", "obstaculo"];
+              <span className="text-blue-500">let</span> amigos = ["cachorro1", "cachorro2"];
             </p>
             <p>
-              <span className="text-blue-500">function</span> caminhoLimpo(array) {"{"}
+              <span className="text-blue-500">function</span> alimentarAmigos(array) {"{"}
             </p>
             <p className="pl-5">
-              <span className="text-blue-500">let</span> posicao =
+              <span className="text-blue-500">for</span> (let i = 0; i &lt; array.length; i++) {"{"}
+            </p>
+            <p className="pl-10">
+              console.log(<span className="text-orange-500">"Alimentando o ${"{"}</span>
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="0 - 3"
-                className="w-16 text-center border border-gray-300 rounded"
+                placeholder="array[i]"
+                className="w-20 text-center border border-gray-300 rounded"
               />
-              ;
-            </p>
-            <p className="pl-5">
-              <span className="text-blue-500">if</span> (array[posicao] === <span className="text-orange-500">"livre"</span>) {"{"}
-            </p>
-            <p className="pl-10">
-              <span className="text-purple-500">return</span> "Caminho livre!";
-            </p>
-            <p className="pl-5">{"} else {"}</p>
-            <p className="pl-10">
-              <span className="text-purple-500">return</span> "Caminho bloqueado!";
+              <span className="text-orange-500">{"}"}"</span>);
             </p>
             <p className="pl-5">{"}"}</p>
             <p>{"}"}</p>
           </div>
           <div className="w-full flex justify-end items-center pr-2 pb-1">
-            <Link to="/content" className="text-blue-500 duration-500">
+            <Link to="/content" className={`text-blue-500 duration-500"
+                }`}>
               <FontAwesomeIcon icon={faCircleInfo} />
             </Link>
           </div>
@@ -74,6 +68,6 @@ export default function Challenge5() {
           </button>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

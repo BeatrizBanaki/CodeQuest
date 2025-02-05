@@ -1,4 +1,4 @@
-import Result1 from './Result1'
+import Result1 from './Result2'
 
 
 export default function Result({ children }) {

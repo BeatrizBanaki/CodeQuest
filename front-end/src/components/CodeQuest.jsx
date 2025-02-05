@@ -22,13 +22,23 @@ export default function CodeQuest() {
 
   const challenges = [
     {
+      component: <Challenge1 />,
+      result: <Result1 />
+    },
+
+    {
       component: <Challenge2 />,
       result: <Result2 />
     },
 
     {
-      component: <Challenge1 />,
-      result: <Result1 />
+      component: <Challenge3 />,
+      result: <Result3 />
+    },
+
+    {
+      component: <Challenge4 />,
+      result: <Result4 />
     },
 
     {
@@ -39,16 +49,6 @@ export default function CodeQuest() {
     {
       component: <Challenge6 />,
       result: <Result6 />
-    },
-
-    {
-      component: <Challenge4 />,
-      result: <Result4 />
-    },
-
-    {
-      component: <Challenge3 />,
-      result: <Result3 />
     }
   ];
 
