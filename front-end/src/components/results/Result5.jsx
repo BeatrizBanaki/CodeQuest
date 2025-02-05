@@ -1,72 +1,72 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from "react";
 import { ApiContext } from '../../context/ApiContext';
-import tears from "../../assets/images/tears.png";
-import mousetoy from "../../assets/images/mouse-toy.png";
-import poop from "../../assets/images/poop.png";
+import pitbull from "../../assets/images/pitbull.png";
+import schnauzer from "../../assets/images/schnauzer.png";
+import food from "../../assets/images/pet-food.png";
 
-
-export default function Result5() {
+export default function Result4() {
   const { inputValue } = useContext(ApiContext);
-  const caminho = ["obstaculo", "obstaculo", "livre", "obstaculo"];
-  const fileiras = 4;
-  const espacos = 6;
+  const [positions, setPositions] = useState([0, 1]);
+  const [feedback, setFeedback] = useState("");
 
-  const verificarCaminho = (posicao) => {
-    if (posicao === "" || isNaN(posicao)) {
-      return null;
+  useEffect(() => {
+    if (!inputValue) return;
+
+    const newPositions = [0, 1];
+
+    if (inputValue === "array[0]") {
+      newPositions[0] = 5;
+    } else if (inputValue === "array[1]") {
+      newPositions[1] = 5;
+    } else if (inputValue === "array[i]") {
+      newPositions[0] = 5;
+      newPositions[1] = 5;
+    } else {
+      setFeedback("Entrada inválida. Tente array[0], array[1], ou array[i].");
+      return;
     }
-    if (posicao < 0 || posicao >= fileiras) {
-      return "invalida";
-    }
 
-    return caminho[posicao] === "livre" ? "livre" : "bloqueado";
-  };
-
-  const resultado = verificarCaminho(parseInt(inputValue));
+    setPositions(newPositions);
+    setFeedback(
+      inputValue === "array[i]"
+        ? "Alimentando os dois cachorros, parabéns!"
+        : inputValue === "array[0]"
+          ? "Alimentando o Pitbull"
+          : "Alimentando o Schnauzer"
+    );
+  }, [inputValue]);
 
   return (
-    <div className="mt-5 text-center">
-      <div className="grid grid-rows-4 gap-2">
-        {Array.from({ length: fileiras }).map((_, rowIndex) => (
-          <div key={rowIndex} className="flex justify-center gap-2">
-            {Array.from({ length: espacos }).map((_, colIndex) => {
-              const isSelected = parseInt(inputValue) === rowIndex;
-              const isBlocked = resultado === "bloqueado" && isSelected;
-              const isLastColumn = colIndex === espacos - 1;
-              const isObstacle = caminho[colIndex] === "obstaculo";
-
-              return (
-                <div
-                  key={colIndex}
-                  className={`w-28 h-20 flex justify-center items-center border border-gray-300 rounded-lg
-                    ${!isSelected ? "bg-transparent" :
-                      (isSelected && !isBlocked ? "bg-green-400" : "bg-red-400")}
-                  `}
-                >
-                  {isLastColumn && (
-                    <img src={mousetoy} alt="Recompensa do gato" className="w-14 h-14" />
-                  )}
-                  {isBlocked && (colIndex > 0 && colIndex < 5) && (
-                    <img src={poop} alt="Obstáculo" className="w-14 h-14" />
-                  )}
-                  {isSelected && colIndex === 0 && <img src={tears} alt="Gatinho" className="w-14 h-14" />}
-                </div>
-              );
-            })}
+    <div className="mt-5">
+      <div className="flex justify-center items-center gap-2">
+        {[...Array(6)].map((_, index) => (
+          <div
+            key={index}
+            className={`w-28 h-20 flex justify-center items-center border border-gray-300 bg-transparent rounded-lg bg-gray-200`}
+          >
+            {index === 5 && positions[0] === 5 && positions[1] === 5 && (
+              <div className="flex">
+                <img src={pitbull} alt="Pitbull" className="w-14 h-14" />
+                <img src={schnauzer} alt="Schnauzer" className="w-14 h-14" />
+              </div>
+            )}
+            {index === positions[0] && !(index === 5 && positions[1] === 5) && (
+              <img src={pitbull} alt="Pitbull" className="w-14 h-14" />
+            )}
+            {index === positions[1] && !(index === 5 && positions[0] === 5) && (
+              <img src={schnauzer} alt="Schnauzer" className="w-14 h-14" />
+            )}
+            {index === 5 && !(positions[0] === 5 && positions[1] === 5) && (
+              <img src={food} alt="Lata de ração" className="w-14 h-14" />
+            )}
           </div>
         ))}
       </div>
-      <div className="mt-3 text-center text-lg">
-        {resultado === "invalida" && (
-          <span className="text-orange-500">Posição inválida! Digite um valor entre 0 e 3.</span>
-        )}
-        {resultado === "livre" && (
-          <span className="text-green-500">Caminho livre! O gato percorreu com sucesso.</span>
-        )}
-        {resultado === "bloqueado" && (
-          <span className="text-red-500">Caminho bloqueado! O gato encontrou um obstáculo.</span>
-        )}
-      </div>
+      {feedback && (
+        <p className={`text-lg text-center mt-3 ${feedback.includes("parabéns") ? "text-green-500" : "text-red-500"}`}>
+          {feedback}
+        </p>
+      )}
     </div>
   );
 }

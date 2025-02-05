@@ -1,69 +1,72 @@
-import { useContext, useState, useEffect } from "react";
-import { ApiContext } from "../../context/ApiContext";
-import worry from "../../assets/images/worry.png";
-import shy from "../../assets/images/shy.png";
-import smile2 from "../../assets/images/smile2.png";
-import hearts from "../../assets/images/hearts.png";
-import hug from "../../assets/images/hug.png";
+import { useContext } from 'react';
+import { ApiContext } from '../../context/ApiContext';
+import tears from "../../assets/images/tears.png";
+import mousetoy from "../../assets/images/mouse-toy.png";
+import poop from "../../assets/images/poop.png";
 
-export default function Result3() {
-  const { feedback, inputValue } = useContext(ApiContext);
-  const [localPosition1, setLocalPosition1] = useState(0);
-  const [localPosition2, setLocalPosition2] = useState(5);
-  const areAdjacent =
-    Math.abs(localPosition1 - localPosition2) === 1;
 
-  useEffect(() => {
-    const [pos1, pos2] = inputValue.split(",").map(Number);
+export default function Result5() {
+  const { inputValue } = useContext(ApiContext);
+  const caminho = ["obstaculo", "obstaculo", "livre", "obstaculo"];
+  const fileiras = 4;
+  const espacos = 6;
 
-    if (!isNaN(pos1) && pos1 >= 0 && pos1 < 6) {
-      setLocalPosition1(pos1);
+  const verificarCaminho = (posicao) => {
+    if (posicao === "" || isNaN(posicao)) {
+      return null;
     }
-    if (!isNaN(pos2) && pos2 >= 0 && pos2 < 6) {
-      setLocalPosition2(pos2);
+    if (posicao < 0 || posicao >= fileiras) {
+      return "invalida";
     }
-  }, [inputValue]);
+
+    return caminho[posicao] === "livre" ? "livre" : "bloqueado";
+  };
+
+  const resultado = verificarCaminho(parseInt(inputValue));
 
   return (
-    <>
-      <div className="mt-5">
-        <div className="flex justify-center items-center gap-2">
-          {[...Array(6)].map((_, index) => (
-            <div
-              key={index}
-              className={`w-28 h-20 flex justify-center items-center border border-gray-300 bg-transparent rounded-lg bg-gray-200`}
-            >
-              {areAdjacent ? (
-                <>
-                  {index === localPosition1 && (
-                    <img src={hearts} alt="Gato 1 com coração" className="w-16 h-16" />
+    <div className="mt-5 text-center">
+      <div className="grid grid-rows-4 gap-2">
+        {Array.from({ length: fileiras }).map((_, rowIndex) => (
+          <div key={rowIndex} className="flex justify-center gap-2">
+            {Array.from({ length: espacos }).map((_, colIndex) => {
+              const isSelected = parseInt(inputValue) === rowIndex;
+              const isBlocked = resultado === "bloqueado" && isSelected;
+              const isLastColumn = colIndex === espacos - 1;
+              const isObstacle = caminho[colIndex] === "obstaculo";
+
+              return (
+                <div
+                  key={colIndex}
+                  className={`w-28 h-20 flex justify-center items-center border border-gray-300 rounded-lg
+                    ${!isSelected ? "bg-transparent" :
+                      (isSelected && !isBlocked ? "bg-green-400" : "bg-red-400")}
+                  `}
+                >
+                  {isLastColumn && (
+                    <img src={mousetoy} alt="Recompensa do gato" className="w-14 h-14" />
                   )}
-                  {index === localPosition2 && (
-                    <img src={hug} alt="Gato 2 com coração" className="w-16 h-16" />
+                  {isBlocked && (colIndex > 0 && colIndex < 5) && (
+                    <img src={poop} alt="Obstáculo" className="w-14 h-14" />
                   )}
-                </>
-              ) : (
-                <>
-                  {index === localPosition1 && (
-                    <img src={shy} alt="Gato 1" className="w-16 h-16" />
-                  )}
-                  {index === localPosition2 && (
-                    <img src={smile2} alt="Gato 2" className="w-16 h-16" />
-                  )}
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-        {feedback && (
-          <p
-            className={`text-lg text-center mt-3 ${feedback.includes("Parabéns") ? "text-green-500" : "text-red-500"
-              }`}
-          >
-            {feedback}
-          </p>
+                  {isSelected && colIndex === 0 && <img src={tears} alt="Gatinho" className="w-14 h-14" />}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 text-center text-lg">
+        {resultado === "invalida" && (
+          <span className="text-orange-500">Posição inválida! Digite um valor entre 0 e 3.</span>
+        )}
+        {resultado === "livre" && (
+          <span className="text-green-500">Caminho livre! O gato percorreu com sucesso.</span>
+        )}
+        {resultado === "bloqueado" && (
+          <span className="text-red-500">Caminho bloqueado! O gato encontrou um obstáculo.</span>
         )}
       </div>
-    </>
+    </div>
   );
 }

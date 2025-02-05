@@ -1,86 +1,69 @@
-import { useState, useContext } from 'react';
-import { ApiContext } from '../../context/ApiContext';
-import smile from "../../assets/images/smile.png";
-import mousetoy from "../../assets/images/mouse-toy.png";
-import bone from "../../assets/images/bone.png";
-import catToy from "../../assets/images/cat-toy.png";
+import { useContext, useState, useEffect } from "react";
+import { ApiContext } from "../../context/ApiContext";
+import worry from "../../assets/images/worry.png";
+import shy from "../../assets/images/shy.png";
+import smile2 from "../../assets/images/smile2.png";
+import hearts from "../../assets/images/hearts.png";
+import hug from "../../assets/images/hug.png";
 
-export default function Result6() {
-  const { inputValue } = useContext(ApiContext);
-  const brinquedos = ["bola", "ratinho", "bola", "osso", "bola", "osso"];
-  const contarBrinquedos = (tipo) => {
-    let contador = 0;
-    for (let i = 0; i < brinquedos.length; i++) {
-      if (brinquedos[i] === tipo) {
-        contador++;
-      }
+export default function Result3() {
+  const { feedback, inputValue } = useContext(ApiContext);
+  const [localPosition1, setLocalPosition1] = useState(0);
+  const [localPosition2, setLocalPosition2] = useState(5);
+  const areAdjacent =
+    Math.abs(localPosition1 - localPosition2) === 1;
+
+  useEffect(() => {
+    const [pos1, pos2] = inputValue.split(",").map(Number);
+
+    if (!isNaN(pos1) && pos1 >= 0 && pos1 < 6) {
+      setLocalPosition1(pos1);
     }
-    return contador;
-  };
-
-  const respostaUsuario = inputValue.toLowerCase();
-  const contagem = contarBrinquedos(respostaUsuario);
-
-  let mensagem = "";
-  let corMensagem = "";
-
-  switch (true) {
-    case !inputValue:
-      mensagem = "";
-      corMensagem = "";
-      break;
-
-    case respostaUsuario === "bola":
-      mensagem = `Tem ${contagem} bolas, parabéns!`;
-      corMensagem = "text-green-500";
-      break;
-
-    case respostaUsuario === "ratinho":
-      mensagem = `Tem ${contagem} ratinho, mas não são bolas.`;
-      corMensagem = "text-yellow-500";
-      break;
-
-    case respostaUsuario === "osso":
-      mensagem = `Tem ${contagem} ossos, mas não são bolas.`;
-      corMensagem = "text-yellow-500";
-      break;
-
-    default:
-      mensagem = `Não existe esse brinquedo ou você digitou errado.`;
-      corMensagem = "text-red-500";
-      break;
-  }
+    if (!isNaN(pos2) && pos2 >= 0 && pos2 < 6) {
+      setLocalPosition2(pos2);
+    }
+  }, [inputValue]);
 
   return (
-    <div className="pt-10 text-center">
-      <div className="flex gap-2 mt-5">
-        {brinquedos.map((brinquedo, index) => {
-          let imagem;
-          switch (brinquedo) {
-            case "bola":
-              imagem = catToy;
-              break;
-            case "ratinho":
-              imagem = mousetoy;
-              break;
-            case "osso":
-              imagem = bone;
-              break;
-            default:
-              imagem = poop;
-              break;
-          }
-
-          return (
-            <div key={index} className="flex justify-center items-center w-28 h-20 border border-gray-300 rounded-lg">
-              <img src={imagem} alt={brinquedo} className="w-14 h-14" />
+    <>
+      <div className="mt-5">
+        <div className="flex justify-center items-center gap-2">
+          {[...Array(6)].map((_, index) => (
+            <div
+              key={index}
+              className={`w-28 h-20 flex justify-center items-center border border-gray-300 bg-transparent rounded-lg bg-gray-200`}
+            >
+              {areAdjacent ? (
+                <>
+                  {index === localPosition1 && (
+                    <img src={hearts} alt="Gato 1 com coração" className="w-16 h-16" />
+                  )}
+                  {index === localPosition2 && (
+                    <img src={hug} alt="Gato 2 com coração" className="w-16 h-16" />
+                  )}
+                </>
+              ) : (
+                <>
+                  {index === localPosition1 && (
+                    <img src={shy} alt="Gato 1" className="w-16 h-16" />
+                  )}
+                  {index === localPosition2 && (
+                    <img src={smile2} alt="Gato 2" className="w-16 h-16" />
+                  )}
+                </>
+              )}
             </div>
-          );
-        })}
+          ))}
+        </div>
+        {feedback && (
+          <p
+            className={`text-lg text-center mt-3 ${feedback.includes("Parabéns") ? "text-green-500" : "text-red-500"
+              }`}
+          >
+            {feedback}
+          </p>
+        )}
       </div>
-      <div className={`mt-5 text-lg text-center ${corMensagem}`}>
-        {mensagem}
-      </div>
-    </div>
+    </>
   );
 }

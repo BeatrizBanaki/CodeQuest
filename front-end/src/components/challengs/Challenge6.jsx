@@ -1,64 +1,89 @@
-import { useState, useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import { ApiContext } from "../../context/ApiContext";
-import { Link } from "react-router-dom";
+import { useContext, useState } from 'react';
+import { ApiContext } from '../../context/ApiContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Challenge6() {
-  const { setInputValue } = useContext(ApiContext);
-  const [input, setInput] = useState("");
+  const { feedback, setFeedback, setInputValue } = useContext(ApiContext);
+  const [pos1, setPos1] = useState("");
+  const [pos2, setPos2] = useState("");
 
   const handleSubmit = () => {
-    setInputValue(input.trim());
+    const position1 = parseInt(pos1, 10);
+    const position2 = parseInt(pos2, 10);
+    const array = Array(6).fill("vazio");
+
+    if (
+      position1 >= 0 &&
+      position1 < 6 &&
+      position2 >= 0 &&
+      position2 < 6 &&
+      position1 !== position2
+    ) {
+      array[position1] = "gato";
+      array[position2] = "gato";
+
+      setInputValue(`${position1},${position2}`);
+
+      for (let i = 0; i < array.length - 1; i++) {
+        if (array[i] === "gato" && array[i + 1] === "gato") {
+          setFeedback("Gatos juntos! Parabéns!");
+          return;
+        }
+      }
+      setFeedback("Tente novamente!");
+    } else {
+      setFeedback("Posições inválidas. Use valores entre 0 e 5, e as posições não podem ser iguais.");
+    }
   };
 
   return (
     <div className="pt-10">
       <p className="text-white">
-        O gato tem vários brinquedos espalhados. Sua tarefa é contar quantos são bolas.
-        <ul className="list-disc ml-8">
-          <li>
-            Complete o código no espaço indicado para identificar corretamente os brinquedos.
-          </li>
-        </ul>
+        Verifique se dois gatos estão em posições consecutivas no array. Você pode mover cada gato para qualquer espaço, escolhendo os índices correspondentes. Complete a lógica para verificar se eles estão lado a lado.
       </p>
-      <p className="text-white mt-5">Digite o nome do brinquedo correto e veja o resultado:</p>
+      <p className="text-white mt-5">Complete com os índices das posições desejadas:</p>
+
       <div className="mt-5 text-center">
         <div className="font-mono text-left inline-block bg-gray-100 rounded-lg relative">
           <div className="pt-5 px-5">
             <p>
-              <span className="text-blue-500">let</span> brinquedos = ["bola", "ratinho", "bola", "osso", "bola", "osso"];
+              <span className="text-blue-500">function</span> gatosJuntos(array, pos1, pos2) {"{"}
             </p>
-            <p>
-              <span className="text-blue-500">function</span> contarBolas(array) {"{"}
-            </p>
+            <p className="pl-5">array[pos1] = "gato";</p>
+            <p className="pl-5">array[pos2] = "gato";</p>
             <p className="pl-5">
-              <span className="text-blue-500">let</span> contador = 0;
-            </p>
-            <p className="pl-5">
-              <span className="text-blue-500">for</span> (<span className="text-blue-500">let</span> i = 0; i {"<"} array.length; i++) {"{"}
+              <span className="text-blue-500">for</span> (let i = 0; i &lt; array.length - 1; i++) {"{"}
             </p>
             <p className="pl-10">
-              <span className="text-blue-500">if</span> (array[i] ==={" "}
+              <span className="text-blue-500">if</span> (array[
               <input
                 type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder='bola'
-                className="w-24 text-center border border-gray-300 rounded"
+                value={pos1}
+                onChange={(e) => setPos1(e.target.value)}
+                placeholder="i"
+                className="w-10 text-center border border-gray-300 rounded"
               />
-              ) {"{"}
+              ] === "gato" && array[
+              <input
+                type="text"
+                value={pos2}
+                onChange={(e) => setPos2(e.target.value)}
+                placeholder="i+1"
+                className="w-10 text-center border border-gray-300 rounded"
+              />
+              ] === "gato") {"{"}
             </p>
-            <p className="pl-14">contador++;</p>
+            <p className="pl-15">return "Gatos juntos! Parabéns!";</p>
             <p className="pl-10">{"}"}</p>
             <p className="pl-5">{"}"}</p>
-            <p className="pl-5">
-              <span className="text-purple-500">return</span> contador;
-            </p>
+            <p className="pl-5">return "Tente novamente!";</p>
             <p>{"}"}</p>
           </div>
           <div className="w-full flex justify-end items-center pr-2 pb-1">
-            <Link to="/content" className="text-blue-500 duration-500">
+            <Link to="/content" className={`text-blue-500 duration-500"
+                }`}>
               <FontAwesomeIcon icon={faCircleInfo} />
             </Link>
           </div>
