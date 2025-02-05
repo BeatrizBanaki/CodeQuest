@@ -49,3 +49,4 @@ Para dúvidas ou sugestões, entre em contato:
 
 ## Planejamento
 - https://app.clickup.com/9011514591/v/f/90113643524/90111940119
+- https://docs.google.com/spreadsheets/d/1PkyYWYPmCG6Lxhqqbak2y0Y-eB8vJEoSDZZadQv49ts/edit?usp=sharing
